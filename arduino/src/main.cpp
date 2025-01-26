@@ -1,11 +1,26 @@
 #include <Arduino.h>
 
-void setup() { Serial.begin(9600); }
+void setup() {
+  Serial.begin(9600);
+
+  pinMode(5, INPUT);
+}
 
 void loop() {
-  static int count = 0;
+  static bool state = false;
+  static unsigned long lastMillis = 0;
 
-  Serial.println(count);
-  count++;
-  delay(1000);
+  if (millis() - lastMillis > 1000) {
+    state = !state;
+
+    lastMillis = millis();
+  }
+
+  if (state) {
+    Serial.println(1);
+  } else {
+    Serial.println(0);
+  }
+
+  delay(100);
 }
