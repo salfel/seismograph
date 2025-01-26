@@ -13,6 +13,7 @@
           python3
           python3Packages.matplotlib
           python3Packages.pyserial
+          python3Packages.numpy
         ];
         shellHook = ''
           zsh
